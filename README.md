@@ -1,4 +1,4 @@
 # tl-test
 
-Repo to test trust lists mechanisms.
+Repo to test IPTC verified lists mechanisms.
 
