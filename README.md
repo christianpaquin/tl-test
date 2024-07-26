@@ -1,2 +1,4 @@
 # tl-test
-Trustlist test
+
+Repo to test trust lists mechanisms.
+
