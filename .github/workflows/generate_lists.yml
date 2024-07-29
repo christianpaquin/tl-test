@@ -23,9 +23,6 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Run script to generate lists
         run: node verified-news-publishers-list/create-lists.js
 
