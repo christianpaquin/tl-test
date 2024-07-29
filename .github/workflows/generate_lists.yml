@@ -24,7 +24,7 @@ jobs:
           node-version: '16'
 
       - name: Run script to generate lists
-        run: node verified-news-publishers-list/create-lists.js
+        run: cd verified-news-publishers-list && node create-lists.js
 
       - name: Commit and push changes
         run: |
