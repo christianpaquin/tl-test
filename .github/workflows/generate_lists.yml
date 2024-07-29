@@ -3,12 +3,12 @@ name: Regenerate Verified News Publishers List
 on:
   push:
     paths:
-      - "verified-news-publisher-list/Publishers/**"
-      - "verified-news-publisher-list/create-lists.js"
+      - "verified-news-publishers-list/Publishers/**"
+      - "verified-news-publishers-list/create-lists.js"
   pull_request:
     paths:
-      - "verified-news-publisher-list/Publishers/**"
-      - "verified-news-publisher-list/create-lists.js"
+      - "verified-news-publishers-list/Publishers/**"
+      - "verified-news-publishers-list/create-lists.js"
 
 jobs:
   generate-list:
@@ -23,18 +23,15 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Run script to generate lists
-        run: node verified-news-publisher-list/create-lists.js
+        run: cd verified-news-publishers-list && node create-lists.js
 
       - name: Commit and push changes
         run: |
           git config --global user.name 'GitHub Actions'
           git config --global user.email 'actions@github.com'
-          git add verified-news-publisher-list/verified-news-publishers-list.json verified-news-publisher-list/verified-news-publishers-list.pem
-          git commit -m "Auto-generate verified news publishers list"
-          git push
+          git add verified-news-publishers-list/verified-news-publishers-list.json verified-news-publishers-list/verified-news-publishers-list.pem
+          git commit -m "Auto-generate verified news publishers lists"
+          git push origin HEAD:${{ github.event.pull_request.base.ref }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
